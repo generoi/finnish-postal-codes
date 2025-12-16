@@ -37,7 +37,7 @@ jobs:
         run: |
           SOURCE_FILE=$(cat data/SOURCE_FILENAME | tr -d '\n')
           DATE=$(echo $SOURCE_FILE | grep -oP 'PCF_\K\d+')
-          echo "version=v${DATE}" >> $GITHUB_OUTPUT
+          echo "version=v1.${DATE}" >> $GITHUB_OUTPUT
           echo "date=${DATE}" >> $GITHUB_OUTPUT
 
       - name: Configure Git
