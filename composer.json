@@ -1,0 +1,43 @@
+{
+  "name": "generoi/finnish-postal-codes",
+  "type": "wordpress-plugin",
+  "license": "MIT",
+  "description": "Finnish postal codes",
+  "homepage": "https://github.com/generoi/finnish-postal-codes",
+  "authors": [
+    {
+      "name": "Oskar Schöldström",
+      "email": "public@oxy.fi"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "FinnishPostalCodes\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=8.1"
+  },
+  "require-dev": {
+    "laravel/pint": "^1.17",
+    "phpunit/phpunit": "^9.0",
+    "wp-phpunit/wp-phpunit": "^6.6",
+    "yoast/phpunit-polyfills": "^2.0"
+  },
+  "scripts": {
+    "fetch": [
+      "php scripts/fetch.php"
+    ],
+    "lint": [
+      "vendor/bin/pint --test"
+    ],
+    "lint:fix": [
+      "vendor/bin/pint"
+    ]
+  },
+  "archive" : {
+    "exclude": [
+      ".gitignore"
+    ]
+  }
+}

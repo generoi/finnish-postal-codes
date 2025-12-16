@@ -1,0 +1,89 @@
+name: Update Postal Codes
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 4 * * *' # Run daily at 4 AM UTC
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring
+
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress
+
+      - name: Fetch latest postal codes
+        id: fetch
+        run: |
+          composer run fetch
+          echo "exit_code=$?" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+      - name: Get version from SOURCE_FILENAME
+        if: steps.fetch.outputs.exit_code == '0'
+        id: version
+        run: |
+          SOURCE_FILE=$(cat data/SOURCE_FILENAME | tr -d '\n')
+          DATE=$(echo $SOURCE_FILE | grep -oP 'PCF_\K\d+')
+          echo "version=v${DATE}" >> $GITHUB_OUTPUT
+          echo "date=${DATE}" >> $GITHUB_OUTPUT
+
+      - name: Configure Git
+        if: steps.fetch.outputs.exit_code == '0'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Commit changes
+        if: steps.fetch.outputs.exit_code == '0'
+        run: |
+          git add data/
+          git commit -m "Update postal codes data"
+
+      - name: Create tag
+        if: steps.fetch.outputs.exit_code == '0'
+        run: |
+          git tag -a "${{ steps.version.outputs.version }}" -m "Update postal codes data (${{ steps.version.outputs.date }})"
+
+      - name: Push changes and tag
+        if: steps.fetch.outputs.exit_code == '0'
+        run: |
+          git push
+          git push --tags
+
+      - name: Create GitHub Release
+        if: steps.fetch.outputs.exit_code == '0'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.version.outputs.version }}
+          name: Postal Codes Update ${{ steps.version.outputs.date }}
+          body: |
+            Updated postal codes data from posti.fi
+            
+            Source file: ${{ steps.version.outputs.date }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: No update needed
+        if: steps.fetch.outputs.exit_code == '2'
+        run: echo "No update needed - data is already up to date"
+
+      - name: Fetch failed
+        if: steps.fetch.outputs.exit_code == '1'
+        run: |
+          echo "Failed to fetch postal codes data"
+          exit 1
