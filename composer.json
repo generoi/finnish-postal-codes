@@ -1,6 +1,5 @@
 {
   "name": "generoi/finnish-postal-codes",
-  "type": "wordpress-plugin",
   "license": "MIT",
   "description": "Finnish postal codes",
   "homepage": "https://github.com/generoi/finnish-postal-codes",
