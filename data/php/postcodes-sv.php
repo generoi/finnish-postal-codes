@@ -3782,6 +3782,7 @@ return array (
   '02331' => 'ESBO',
   '00936' => 'RAPALA VMC',
   '11131' => 'RIIHIMÄKI',
+  '90621' => 'OULU',
   '42011' => 'YRITYSLOKERO',
   '00073' => 'KEHA-KESKUS',
   '00072' => 'ELINVOIMAKESKUS',
