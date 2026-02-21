@@ -1770,7 +1770,6 @@ return array (
   '90850' => 'MARTINNIEMI',
   '96460' => 'ROVANIEMI',
   '12820' => 'RÄYSKÄLÄ',
-  '17530' => 'ARRAKOSKI',
   '90500' => 'OULU',
   '94700' => 'KEMI',
   '97625' => 'VANTTAUSKOSKI',
