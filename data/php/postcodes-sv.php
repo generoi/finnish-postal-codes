@@ -3785,4 +3785,5 @@ return array (
   '42011' => 'YRITYSLOKERO',
   '00073' => 'KEHA-KESKUS',
   '00072' => 'ELINVOIMAKESKUS',
+  '80221' => 'JOENSUU',
 );
