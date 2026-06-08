@@ -27,9 +27,9 @@ jobs:
       - name: Fetch latest postal codes
         id: fetch
         run: |
+          set +e
           composer run fetch
           echo "exit_code=$?" >> $GITHUB_OUTPUT
-        continue-on-error: true
 
       - name: Get version from SOURCE_FILENAME
         if: steps.fetch.outputs.exit_code == '0'
