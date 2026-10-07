@@ -3782,6 +3782,7 @@ return array (
   '96401' => 'ROVANIEMI',
   '11131' => 'RIIHIMÄKI',
   '90621' => 'OULU',
+  '92321' => 'SIIKAJOKI',
   '42011' => 'YRITYSLOKERO',
   '00073' => 'KEHA-KESKUS',
   '00072' => 'ELINVOIMAKESKUS',
