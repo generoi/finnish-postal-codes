@@ -627,7 +627,6 @@ return array (
   '40660' => 'JYVÄSKYLÄ',
   '44401' => 'KONGINKANGAS',
   '49240' => 'PUROLA',
-  '49630' => 'VEHKAJOKI',
   '54710' => 'LEMI',
   '61280' => 'JOKIPII',
   '68800' => 'KOLPPI',
