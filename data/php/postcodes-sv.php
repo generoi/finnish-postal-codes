@@ -1843,7 +1843,6 @@ return array (
   '06450' => 'BORGÅ',
   '31530' => 'PYÖLI',
   '40640' => 'JYVÄSKYLÄ',
-  '49610' => 'SIVATTI',
   '55100' => 'IMATRA',
   '69301' => 'TOHOLAMPI',
   '73600' => 'KAAVI',
