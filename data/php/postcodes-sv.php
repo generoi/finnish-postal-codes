@@ -3780,6 +3780,7 @@ return array (
   '69444' => 'SMARTPOST',
   '86224' => 'SMARTPOST',
   '96401' => 'ROVANIEMI',
+  '00083' => 'OIKEUSPALVELUVIRASTO',
   '11131' => 'RIIHIMÄKI',
   '90621' => 'OULU',
   '92321' => 'SIIKAJOKI',
@@ -3787,4 +3788,5 @@ return array (
   '00073' => 'KEHA-KESKUS',
   '00072' => 'ELINVOIMAKESKUS',
   '80221' => 'JOENSUU',
+  '22104' => 'SMARTPOST',
 );
